@@ -8,9 +8,9 @@
 | Waveshare 1.83" LCD, 240×280, SPI, IPS, 65K colors | Display | Landscape orientation. Rounded-corner glass — factor into case design later |
 | M274 360° rotary encoder w/ push button | Primary scroll/select input | Quadrature (A/B) — must be on native GPIO with interrupts, NOT the I2C expander |
 | 5x push buttons | Music controls (3 fixed) + Hype/Rest (2, context-dependent) | On I2C expander |
-| 3-way switch, 2P2T (DPDT), ON-OFF-ON | Off / On / Lock | Pole 1: series with battery, physically cuts power in Off. Pole 2: on I2C expander, senses On vs. Lock while powered |
+| 3-way switch | Off / On / Lock | On I2C expander (2 pins for 3 states, or repurpose 1 native ADC pin with a voltage-divider trick if expander pins run tight) |
 | PCF8574T | I2C 8-bit GPIO expander | Confirmed suitable — see pin budget below |
-| NOVA 604060 LiPo battery, 3.7V, 2000mAh, protected, JST-PH connector | Power | 604060 form factor (6mm thick × 40mm wide × 60mm long) chosen for a slim profile, favoring thinness over footprint since the device is clipped to the body |
+| LiPo battery, 3.7V, protected, JST-PH connector, 1200–2000mAh | Power | User is sourcing a single protected cell (not paralleling the 4 unprotected cells already owned — see rationale below) |
 | TP4056, USB-C variant, with current protection | Charging | Single exposed USB-C port on the device |
 
 ## Pin budget
@@ -24,37 +24,54 @@ Native ESP32S3 GPIO is the scarce resource. Allocation:
 
 **Why the encoder can't share the expander with the buttons**: buttons are simple debounced digital reads — I2C polling latency is fine. The encoder needs to catch every edge transition in real time to track direction/speed accurately; that requires native interrupt-driven GPIO.
 
+### Confirmed pin mapping (from Phase 0a display + encoder bring-up)
+
+Validated on breadboard with the XIAO ESP32S3's default Arduino board-package pin
+aliases (select board "XIAO_ESP32S3"):
+
+| Signal | XIAO pin | GPIO | Notes |
+|---|---|---|---|
+| LCD RST | D3 | GPIO4 | |
+| LCD DC | D1 | GPIO2 | |
+| LCD CS | D0 | GPIO1 | **not** D9 — D9 is the board's default hardware MISO pin; sharing it with CS conflicts with the SPI peripheral even though this display never uses MISO |
+| LCD DIN/MOSI | D10 | GPIO9 | XIAO default hardware SPI pin, used via plain `SPI.begin()` |
+| LCD CLK/SCK | D8 | GPIO7 | XIAO default hardware SPI pin |
+| LCD BL | tied direct to 3V3 | — | our LCD cable is all-female, so BL isn't on a GPIO and can't be PWM-dimmed as wired. **Open item**: final wiring should route BL through a PWM-capable GPIO so the Phase 5 screen-dim/power-saving behavior is possible; breadboard build is backlight-always-on. |
+| Encoder CLK | D4 | GPIO5 | temporary — borrows the I2C pins since the expander isn't wired in yet; move once it is |
+| Encoder DT | D5 | GPIO6 | temporary, same caveat as above |
+
+The LCD panel in hand is confirmed the Rev1 variant (NV3030B driver chip), matching
+Waveshare's vendor demo init sequence used for bring-up.
+
 ## Power system
 
 ### Battery decision (locked)
 
-**NOVA 604060, 3.7V, 2000mAh, protected LiPo, JST-PH 2.0mm connector** (standard
-connector for TP4056 boards and ESP32-adjacent hardware). Chosen in the 604060 form
-factor (6mm thick × 40mm wide × 60mm long) over the equivalent 103450 option (10mm
-thick × 34mm wide × 50mm long) — same capacity and price — because thickness matters
-more than footprint for a device that's clipped to the body: thinness stacks directly
-into overall device bulk, while footprint can be routed around in the PCB/case layout.
-
-The 2x WLY551145 250mAh cells previously owned are repurposed for breadboard bring-up
-/ current-draw testing only (Phase 0b), not the final build — their combined ~500mAh
-capacity falls short of the runtime target on its own.
+The 4x WLY151145 250mAh cells already owned have **no onboard protection circuit**.
+Paralleling 4 unprotected raw cells into a single pack was explicitly rejected — no
+per-cell over-charge/over-discharge/short-circuit cutoff, and mismatched aging across
+cells wired raw in parallel is a fire risk over time. **Decision: buy a single
+protected LiPo cell, 3.7V, 1200–2000mAh, JST-PH 2.0mm connector** (standard connector
+for TP4056 boards and ESP32-adjacent hardware). The 4 existing cells are repurposed for
+breadboard bring-up / current-draw testing only (Phase 0b), not the final build.
 
 ### Runtime target
 
 Minimum 3–4 hours continuous use; target 4–6+ hours. A bare 250mAh cell was calculated
 as insufficient (~1–1.5 hrs under continuous BLE + display load) — this is why the
-2000mAh battery was chosen rather than trying to hit the runtime target through
-power-saving alone. Power-saving behavior (screen dim/sleep between interactions)
-still matters and should be designed in from Phase 1, but is a multiplier on top of
-adequate battery capacity, not a substitute for it.
+battery was upsized rather than trying to hit the runtime target through power-saving
+alone. Power-saving behavior (screen dim/sleep between interactions) still matters and
+should be designed in from Phase 1, but is a multiplier on top of adequate battery
+capacity, not a substitute for it.
 
 ### Charging
 
 Single USB-C port exposed through the case, wired to the TP4056 (USB-C variant, with
 current protection). TP4056 output feeds the battery and the 3.3V/5V regulation stage
 feeding the XIAO — standard topology, no special handling needed beyond confirming the
-TP4056's charge current setting resistor is appropriate for the 604060's rated charge
-current before first use.
+TP4056's charge current setting resistor is appropriate for the chosen cell's capacity
+(check the TP4056 board's current-limit resistor against the new battery's rated charge
+current before first use).
 
 ## Power switch semantics (locked)
 

@@ -23,6 +23,10 @@ groups (not shared global state):
   Debounces and translates raw input into semantic events (e.g., `ENCODER_CW`,
   `BUTTON_HYPE_PRESS`, `SWITCH_LOCK`) posted to a shared input event queue.
   Rationale for split GPIO handling: see hardware doc, pin budget section.
+  **Confirmed during Phase 0a bring-up**: a single `CHANGE`-triggered interrupt on
+  the encoder's CLK pin, comparing CLK's new state against DT's current state to
+  determine direction, is sufficient to decode direction reliably — no need for
+  interrupts on both A and B channels or a dedicated quadrature decoder peripheral.
 - **BLE task** — owns the GATT server/client connection lifecycle, message
   serialization/deserialization, and reconnection logic. Talks to the app; never
   touches Spotify directly (see `app/01-ble-communication.md`).
