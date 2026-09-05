@@ -27,11 +27,11 @@
 
 ### Phase 0a — Core hardware bring-up
 - [x] LCD wired to XIAO ESP32S3 over SPI, rendering confirmed (ported vendor NV3030B demo)
-- [x] Rotary encoder wired to native GPIO, direction decode confirmed (single CHANGE-interrupt method)
-- [ ] IO expander (PCF8574T) wired, all 7 inputs confirmed reading correctly over I2C — blocked on part arriving
-- [ ] 3-way switch state detection confirmed for all 3 positions — blocked on part arriving
-- [ ] Push buttons (5x) wired via expander, debounce confirmed — blocked on expander arriving
-- [ ] Encoder push-button wired and confirmed
+- [x] Rotary encoder wired to native GPIO, direction decode confirmed (single CHANGE-interrupt method) — now on D6/D7 after freeing D4/D5 for the expander
+- [x] IO expander (PCF8574T) wired, all inputs confirmed reading correctly over I2C (address 0x20)
+- [x] Push buttons (5x) wired via expander, confirmed working — mapping: Previous=P2, Play/Pause=P4, Next=P0, Hype=P3, Rest=P1
+- [x] Encoder push-button wired and confirmed
+- [ ] 3-way switch state detection confirmed for all 3 positions — deferred, wiring not yet done
 
 ### Phase 0b — Power system validation
 - [ ] Battery + TP4056 wiring complete — blocked on battery arriving
@@ -90,9 +90,9 @@
 | Part | Status | Notes |
 |---|---|---|
 | XIAO ESP32S3, display, rotary encoder, push buttons | In hand | |
-| PCF8574T IO expander | Ordered | ETA ~3–4 days from Aug 29 |
-| 3-way switch, 2P2T (DPDT) ON-OFF-ON | Ordered | |
-| Battery: NOVA 604060, 2000mAh | Ordered | 604060 form factor chosen over 103450 for slimness |
+| PCF8574T IO expander | In hand, wired and confirmed | Address 0x20 (all address pins low) |
+| 3-way switch, 2P2T (DPDT) ON-OFF-ON | In hand, not yet wired | |
+| Battery: NOVA 604060, 2000mAh | In hand, not yet wired | |
 | Antenna | No purchase needed | Stock XIAO U.FL stick antenna is sufficient for short-range BLE |
 
 ---
@@ -112,3 +112,13 @@
 - **Encoder decode**: a single CHANGE interrupt on CLK (compared against DT's
   state) is enough to decode direction — no need for interrupts on both channels.
   Noted in `02-firmware.md`.
+- **Encoder relocation**: moved off D4/D5 to D6/D7 once the PCF8574T expander
+  arrived and needed the I2C pins. See `01-device-hardware.md`.
+- **PCF8574T confirmed**: I2C address 0x20, buttons wired common-GND with one
+  dedicated expander pin each (no external pull-ups needed). Button mapping
+  confirmed and logged in `01-device-hardware.md`.
+- **`Paint_NewImage` argument order**: the Waveshare GUI_Paint library expects the
+  *physical* panel dimensions (240, 280) as its Width/Height args regardless of
+  rotation — not the logical rotated canvas size. Passing the rotated dimensions
+  directly corrupts `Paint_Clear`'s addressing and scrambles rendering. Correct
+  call for landscape use: `Paint_NewImage(LCD_WIDTH, LCD_HEIGHT, ROTATE_90, ...)`.

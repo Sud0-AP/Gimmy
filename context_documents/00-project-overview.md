@@ -35,7 +35,14 @@ development stalls.
 | Charging | TP4056 USB-C module | Single USB-C port exposed on device for charging |
 | Enclosure | Custom 3D-printed case (designed after hardware freeze) | Designed by user post hardware-freeze |
 
-Full detail: `hardware/01-device-hardware.md`
+- `context_documents/00-project-overview.md` — High-level architecture & phase plan
+- `context_documents/01-device-hardware.md` — BOM, pin mappings, power architecture
+- `context_documents/02-firmware.md` — ESP-IDF FreeRTOS task breakdown & logic
+- `context_documents/04-ui-ux.md` — Design system, screen inventory & conventions
+- `context_documents/05-progress.md` — Current milestone checklist & status
+- `context_documents/06-display-ui-library.md` — Waveshare LCD driver & Lopaka shim library
+- `context_documents/07-ui-interaction-spec.md` — Visual patterns, animations, state machine & per-screen behavior spec
+- `context_documents/08-lopaka-screens-explained.md` — How to read Lopaka exports & convert them to firmware
 
 ---
 

@@ -69,6 +69,12 @@ not a fallback path.
   count/target (weight range, rep range)
 - Per exercise: last-session actuals (sets/weight/reps, date) and personal-best
   actuals (sets/weight/reps, date) — enough to render the Stats screen offline
+- Per exercise: `target hype seconds` and `target rest seconds` — optional authored
+  durations that feed the Settings → Hype & Rest "Exercise based time" option (see
+  `02-music-control.md` and `07-ui-interaction-spec.md`). When that option is
+  ticked for a button, the triggered mode's countdown length is read from the matching
+  field on the current exercise instead of the fixed configured duration. Authored in
+  the app alongside weight/rep targets and synced down with the template.
 - Any playlist association, if templates are ever linked to specific music (not
   currently specified as a requirement — flag as an open question rather than assumed)
 

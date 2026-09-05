@@ -42,9 +42,11 @@ evolve without breaking old firmware/app pairings.
   app-side "device needs charging" prompts)
 
 **App → Device**
-- Now-playing metadata: track title, artist, playback position/duration, thumbnail
-  reference (if any icon/art is shown — see UI doc; likely no arbitrary album art
-  rendering, see open question below)
+- Now-playing metadata: track title, artist, playback position/duration, and **album
+  art** for the current track (confirmed required by the Home screens — see
+  `02-music-control.md` and `07-ui-interaction-spec.md`). The transfer format
+  (raw bitmap vs. compressed JPEG decoded on-device) is a Phase 2 schema decision — see
+  open questions below.
 - Playlist name list (for the pre-configured playlist picker) and queue contents
   (upcoming tracks, shuffle/repeat state) for the Music Queue screen
 - Workout templates (exercises, target sets/reps/weight, last-session and PR data) —
@@ -98,8 +100,9 @@ breaking compatibility, but no OTA transport work happens until its own phase.
 ## Open questions to resolve during implementation (not blocking doc creation)
 
 - Exact message serialization format (concrete schema) — decide when Phase 2 begins.
-- Whether album art / any bitmap image data is ever sent over BLE, or whether the
-  device only ever shows fixed local icon assets (current lean: fixed local icons only,
-  no arbitrary image transfer — keeps BLE payloads small and avoids needing an image
-  decoder on-device). Confirm against `app/04-ui-ux.md` before Phase 2 schema is
-  finalized.
+- **Resolved: album art IS sent over BLE.** The Home screens require real synced album
+  art for the current track (see `02-music-control.md`), so the earlier "fixed local
+  icons only" lean no longer holds. What remains open is the **format** — app sends a
+  ready-to-draw raw bitmap (no on-device decoder, larger payload) vs. compressed JPEG
+  (smaller payload, needs an on-device decoder). Decide this when the Phase 2 BLE schema
+  is designed.

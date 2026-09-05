@@ -26,9 +26,19 @@ The device does **not** browse the user's full Spotify library. Instead:
 - The user selects/curates a shortlist of playlists **in the app**, which is what
   appears in the on-device playlist picker (matches the "Choose Split" / "Choose
   workout" Lopaka screen pattern — same list-select interaction, applied to playlists).
-- The **Music Queue** menu screen (see existing Lopaka screen) shows: shuffle toggle,
-  repeat toggle, and the next 5–10 upcoming tracks in the current queue, scrollable via
-  the encoder.
+- The **Music Queue** menu screen (see existing Lopaka screen) shows a fixed,
+  non-interactive "Now Playing" block, followed by a single scrollable list containing —
+  in this order — a **Repeat** row, a **Shuffle** row, then the next 5–10 upcoming tracks
+  in the current queue.
+  - **Important for firmware**: shuffle and repeat are **not** a separate static toggle
+    UI with their own input path. They are two ordinary rows in the same
+    encoder-scrollable list as the queue tracks. Encoder rotate reaches them exactly like
+    any track row; encoder press toggles them (swapping to the `_selected` art) in the
+    same way pressing a track row skips playback to that track. Build one list-selection
+    input path, not two.
+  - Scroll behavior is a windowed list with pinned edges, clamping at the real ends of
+    the list (Repeat topmost, last queued track bottommost) — no wraparound. See
+    `07-ui-interaction-spec.md` for the full interaction write-up.
 - This keeps on-device data light (no full-library sync needed) and keeps the
   interaction fast — the whole point is minimal on-device decision-making.
 
@@ -85,6 +95,21 @@ in the app (durations editable in both app and on-device settings where feasible
    discarded, new mode's playlist+timer starts. This avoids ambiguous nested-snapshot
    logic. Revisit if this proves confusing in practice.
 
+### "Exercise based time" — opt-in auto-duration (added)
+
+A per-button setting (configured on the Settings → Hype & Rest screen — see
+`07-ui-interaction-spec.md`) lets a mode's **duration** be derived from
+per-exercise data instead of the fixed configured duration:
+
+- **Ticked**: the triggered mode's countdown length comes from a per-exercise authored
+  field — `target hype seconds` for Hype, `target rest seconds` for Rest — synced down
+  with the workout template (see `03-workout-logging.md`).
+- **Unticked**: uses the fixed Minute/Second value configured on that screen, as normal.
+- This is **only** about the duration once triggered. It does **not** change the
+  manual-press-only trigger rule — Hype/Rest still fire only on a physical button press,
+  never automatically off a logged set (the separation in "Relationship to workout rest
+  timers" below still holds).
+
 ## Relationship to workout rest timers (locked — explicitly separate)
 
 The Hype/Rest music feature is **entirely independent** from any rest-between-sets
@@ -99,7 +124,12 @@ handled on their own terms.
 
 Displays (per the user's existing designs): track title, artist, elapsed/total time
 with progress bar, and — when relevant — the current exercise context (target
-muscle/rep scheme) alongside it on the combined home screen variant. No arbitrary
-album art rendering planned (keeps BLE payload and on-device rendering simple) —
-placeholder icon boxes shown in the mockups are treated as fixed local icon assets, not
-synced images, pending final confirmation in the UI doc.
+muscle/rep scheme) alongside it on the combined home screen variant.
+
+**Album art (confirmed scope change)**: the large box on the Home screens renders the
+**actual currently-playing track's album art**, synced from Spotify via the app. This
+supersedes the earlier "fixed local icons only, no arbitrary album art" lean noted here
+and in `01-ble-communication.md`. The **transfer mechanism** (app sends a ready-to-draw
+raw bitmap vs. compressed JPEG decoded on-device) is deliberately deferred to the Phase 2
+BLE-protocol discussion — for now, "Home displays real synced album art" is locked as a
+requirement, the mechanism is not yet decided. See `07-ui-interaction-spec.md`.
