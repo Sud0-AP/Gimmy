@@ -1,0 +1,31 @@
+Command: ninja all
+[1/11] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/drivers/encoder/encoder.c.obj
+[2/11] Performing build step for 'bootloader'
+[1/1] cd "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader" && /home/Sud0/.espressif/python_env/idf6.1_py3.14_env/bin/python /home/Sud0/.espressif/v6.1-beta1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /home/Sud0/Projects/Gym\ Assistant/Firmware/gym_assistant_fw/build/bootloader/bootloader.bin
+Bootloader binary size 0x5280 bytes. 0x2d80 bytes (36%) free.
+[3/11] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+[4/11] No install step for 'bootloader'
+[5/11] Linking C static library esp-idf/main/libmain.a
+[6/11] Completed 'bootloader'
+[7/11] Generating esp-idf/esp_system/ld/sections.ld
+NOTE: 
+/home/Sud0/.espressif/v6.1-beta1/esp-idf/components/bt/host/nimble/Kconfig.in:14
+21: BT_NIMBLE_MESH_PROVISIONER: 'default 0' is not a valid bool value (only 'y' 
+and 'n' are allowed). Value is treated as 'n'.
+NOTE: /home/Sud0/.espressif/v6.1-beta1/esp-idf/components/fatfs/Kconfig:240: 
+FATFS_PRINT_LLI: 'default 0' is not a valid bool value (only 'y' and 'n' are 
+allowed). Value is treated as 'n'.
+NOTE: /home/Sud0/.espressif/v6.1-beta1/esp-idf/components/fatfs/Kconfig:245: 
+FATFS_PRINT_FLOAT: 'default 0' is not a valid bool value (only 'y' and 'n' are 
+allowed). Value is treated as 'n'.
+Skipping linker fragment parsing, fragment files unchanged
+[8/11] Building C object CMakeFiles/gym_assistant_fw.elf.dir/project_elf_src_esp32s3.c.obj
+[9/11] Linking CXX executable gym_assistant_fw.elf
+[10/11] Generating binary image from built executable
+esptool v5.4.0
+Creating ESP32-S3 image...
+Merged 3 ELF sections.
+Successfully created ESP32-S3 image.
+Generated /home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/gym_assistant_fw.bin
+[11/11] cd "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build" && /home/Sud0/.espressif/python_env/idf6.1_py3.14_env/bin/python /home/Sud0/.espressif/v6.1-beta1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/Sud0/Projects/Gym\ Assistant/Firmware/gym_assistant_fw/build/partition_table/partition-table.bin /home/Sud0/Projects/Gym\ Assistant/Firmware/gym_assistant_fw/build/gym_assistant_fw.bin
+gym_assistant_fw.bin binary size 0x3bb70 bytes. Smallest app partition is 0x100000 bytes. 0xc4490 bytes (77%) free.

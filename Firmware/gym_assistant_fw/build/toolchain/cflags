@@ -1,0 +1,5 @@
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero
+"-specs=/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/specs/picolibc.specs"

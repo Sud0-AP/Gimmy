@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/CMakeFiles/bootloader
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/CMakeFiles/bootloader.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/CMakeFiles/bootloader-complete.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

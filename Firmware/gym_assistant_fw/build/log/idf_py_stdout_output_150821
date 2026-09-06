@@ -1,0 +1,102 @@
+Command: ninja all
+[1/1081] Generating project_elf_src_esp32s3.c
+[2/1081] Preprocessing linker script /home/Sud0/.espressif/v6.1-beta1/esp-idf/components/esp_system/ld/esp32s3/memory.ld.in -> /home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/esp-idf/esp_system/ld/memory.ld
+[3/1081] Preprocessing linker script /home/Sud0/.espressif/v6.1-beta1/esp-idf/components/esp_system/ld/esp32s3/sections.ld.in -> /home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/esp-idf/esp_system/ld/sections.ld.in
+[4/1081] Building C object esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/lib/http_utils.c.obj
+[5/1081] Building C object esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/lib/http_header.c.obj
+[6/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/util/ctrl_sock.c.obj
+[7/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/httpd_ws.c.obj
+[8/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/httpd_uri.c.obj
+[9/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/httpd_sess.c.obj
+[10/1081] Building C object esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/lib/http_auth.c.obj
+[11/1081] Generating ../../partition_table/partition-table.bin
+Partition table binary generated. Contents:
+*******************************************************************************
+# ESP-IDF Partition Table
+# Name, Type, SubType, Offset, Size, Flags
+nvs,data,nvs,0x9000,24K,
+phy_init,data,phy,0xf000,4K,
+factory,app,factory,0x10000,1M,
+*******************************************************************************
+[12/1081] Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport.c.obj
+[13/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/httpd_main.c.obj
+[14/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/httpd_parse.c.obj
+[15/1081] Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_socks_proxy.c.obj
+[16/1081] Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_internal.c.obj
+[17/1081] Building C object esp-idf/esp_hal_i2s/CMakeFiles/__idf_esp_hal_i2s.dir/esp32s3/i2s_periph.c.obj
+[18/1081] Building C object esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/src/httpd_txrx.c.obj
+[19/1081] Building C object esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/src/esp_https_ota.c.obj
+[20/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_cali.c.obj
+[21/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_common.c.obj
+[22/1081] Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_platform.c.obj
+[23/1081] Building C object esp-idf/esp_hal_i2s/CMakeFiles/__idf_esp_hal_i2s.dir/i2s_hal.c.obj
+[24/1081] Linking C static library esp-idf/esp_https_ota/libesp_https_ota.a
+[25/1081] Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_std.c.obj
+[26/1081] Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ssl.c.obj
+[27/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_oneshot.c.obj
+[28/1081] Linking C static library esp-idf/esp_http_server/libesp_http_server.a
+[29/1081] Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_tdm.c.obj
+[30/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/esp32s3/curve_fitting_coefficients.c.obj
+[31/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_cali_curve_fitting.c.obj
+[32/1081] Building C object esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/transport_ws.c.obj
+[33/1081] Building C object esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/esp_tls_platform_port.c.obj
+[34/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/gdma/adc_dma.c.obj
+[35/1081] Building C object esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/esp-tls-crypto/esp_tls_crypto.c.obj
+[36/1081] Building C object esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/esp_tls_error_capture.c.obj
+[37/1081] Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_pdm.c.obj
+[38/1081] Building C object esp-idf/esp_hal_i2c/CMakeFiles/__idf_esp_hal_i2c.dir/esp32s3/i2c_periph.c.obj
+[39/1081] Building C object esp-idf/esp_hal_i2c/CMakeFiles/__idf_esp_hal_i2c.dir/i2c_hal_iram.c.obj
+[40/1081] Building C object esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/i2s_common.c.obj
+[41/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_continuous.c.obj
+[42/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_monitor.c.obj
+[43/1081] Building C object esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/adc_filter.c.obj
+[44/1081] Building ASM object esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/src/port/xtensa/xt_debugexception.S.obj
+[45/1081] Building ASM object esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/src/port/xtensa/gdbstub-entry.S.obj
+[46/1081] Building C object esp-idf/esp_hal_i2c/CMakeFiles/__idf_esp_hal_i2c.dir/i2c_hal.c.obj
+[47/1081] Building C object esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/src/gdbstub_transport.c.obj
+[48/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/lib_printf.c.obj
+[49/1081] Building C object esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/esp_http_client.c.obj
+[50/1081] Building C object esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/src/packet.c.obj
+[51/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/mesh_event.c.obj
+[52/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/ftm_load_calibration.c.obj
+[53/1081] Building C object esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/src/port/xtensa/gdbstub_xtensa.c.obj
+[54/1081] Linking C static library esp-idf/esp_http_client/libesp_http_client.a
+[55/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/smartconfig.c.obj
+[56/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/wifi_default_ap.c.obj
+[57/1081] Building C object esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/src/gdbstub.c.obj
+[58/1081] Linking C static library esp-idf/tcp_transport/libtcp_transport.a
+[59/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/wifi_init.c.obj
+[60/1081] Building C object esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/esp_tls.c.obj
+[61/1081] Building C object esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug_diagram.c.obj
+[62/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/wifi_netif.c.obj
+[63/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/regulatory/esp_wifi_regulatory.c.obj
+[64/1081] Linking C static library esp-idf/esp_driver_i2s/libesp_driver_i2s.a
+[65/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/wifi_default.c.obj
+[66/1081] Linking C static library esp-idf/esp_hal_i2s/libesp_hal_i2s.a
+[67/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/remote/esp_eap_client_remote_weak.c.obj
+[68/1081] Building C object esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/esp_tls_mbedtls.c.obj
+[69/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/src/smartconfig_ack.c.obj
+[70/1081] Building C object esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/esp32s3/esp_coex_adapter.c.obj
+[71/1081] Building C object esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/src/coexist_debug.c.obj
+[72/1081] Linking C static library esp-idf/esp_adc/libesp_adc.a
+[73/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/remote/esp_wifi_remote_net2.c.obj
+[74/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/esp32s3/esp_adapter.c.obj
+[75/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/port/os_xtensa.c.obj
+[76/1081] Linking C static library esp-idf/esp-tls/libesp-tls.a
+[77/1081] Building C object esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/remote/esp_wifi_remote_weak.c.obj
+[78/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/ap_config.c.obj
+[79/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/ieee802_1x.c.obj
+[80/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/pmksa_cache_auth.c.obj
+[81/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/comeback_token.c.obj
+[82/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/sta_info.c.obj
+[83/1081] Building C object esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/http_parser.c.obj
+[84/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/wpa_auth_ie.c.obj
+[85/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/port/eloop.c.obj
+[86/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/common/dragonfly.c.obj
+[87/1081] Linking C static library esp-idf/http_parser/libhttp_parser.a
+[88/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/crypto_ops.c.obj
+[89/1081] Linking C static library esp-idf/esp_hal_i2c/libesp_hal_i2c.a
+[90/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/utils/bitfield.c.obj
+[91/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/sha256-kdf.c.obj
+[92/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/ap/ieee802_11.c.obj
+[93/1081] Building C object esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/src/crypto/aes-siv.c.obj

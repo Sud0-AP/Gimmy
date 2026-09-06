@@ -1,0 +1,2 @@
+source /home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader/gdbinit/symbols
+source /home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/bootloader/gdbinit/connect
