@@ -1,6 +1,7 @@
 idf_component_register(
     SRCS
         "main.c"
+        "state/dummy_data.c"
         "drivers/lcd/DEV_Config.c"
         "drivers/lcd/LCD_Driver.c"
         "drivers/lcd/GUI_Paint.c"
@@ -10,6 +11,7 @@ idf_component_register(
         "drivers/pcf8574/pcf8574.c"
     INCLUDE_DIRS
         "."
+        "state"
         "drivers/lcd"
         "drivers/encoder"
         "drivers/pcf8574"

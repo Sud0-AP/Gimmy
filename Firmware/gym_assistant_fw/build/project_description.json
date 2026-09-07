@@ -1,7 +1,7 @@
 {
     "version":            "1.3",
     "project_name":       "gym_assistant_fw",
-    "project_version":    "2a257a8",
+    "project_version":    "9173b00-dirty",
     "project_path":       "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw",
     "idf_path":           "/home/Sud0/.espressif/v6.1-beta1/esp-idf",
     "build_dir":          "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build",
@@ -1870,8 +1870,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/main.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/DEV_Config.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/LCD_Driver.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/GUI_Paint.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/font12.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/font24.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/encoder/encoder.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/pcf8574/pcf8574.c" ],
-            "include_dirs": [ ".", "drivers/lcd", "drivers/encoder", "drivers/pcf8574" ]
+            "sources": [ "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/main.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/state/dummy_data.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/DEV_Config.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/LCD_Driver.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/GUI_Paint.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/font12.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/lcd/font24.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/encoder/encoder.c", "/home/Sud0/Projects/Gym Assistant/Firmware/gym_assistant_fw/main/drivers/pcf8574/pcf8574.c" ],
+            "include_dirs": [ ".", "state", "drivers/lcd", "drivers/encoder", "drivers/pcf8574" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -4099,7 +4099,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ ".", "drivers/lcd", "drivers/encoder", "drivers/pcf8574" ]
+            "include_dirs": [ ".", "state", "drivers/lcd", "drivers/encoder", "drivers/pcf8574" ]
         }
     },
     "gdbinit_files": {
